@@ -1,0 +1,126 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/BrushedAluminium.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Copper.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.2857362615109974 -0.2870647555728477 0.9143022558025437 4.627565117683193
+  position 0.0007598007796481912 0.6233224934621735 0.3572076946438418
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation 0 -0.01 0
+  floorSize 5 5
+}
+Robot {
+  children [
+    Group {
+      children [
+        DEF CUERPOROBOT Transform {
+          translation 0 0 0.015
+          children [
+            Shape {
+              appearance BrushedAluminium {
+              }
+              geometry Box {
+                size 0.06 0.07 0.02
+              }
+            }
+          ]
+        }
+        DEF RUEDA1 HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor 0.039 0.018 0.02
+          }
+          device [
+            RotationalMotor {
+              name "Motor1"
+            }
+          ]
+          endPoint Solid {
+            translation 0.039 0.018 0.02
+            rotation 0 1 0 1.572410605461135
+            children [
+              DEF RUEDA Shape {
+                appearance Copper {
+                }
+                geometry Cylinder {
+                  height 0.019
+                  radius 0.02
+                }
+              }
+            ]
+            boundingObject USE RUEDA
+            physics Physics {
+            }
+          }
+        }
+        DEF RUEDA2 HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor -0.039 0.018 0.02
+          }
+          device [
+            RotationalMotor {
+              name "Motor2"
+            }
+          ]
+          endPoint Solid {
+            translation -0.039 0.018 0.02
+            rotation 0 1 0 1.5707996938995747
+            children [
+              USE RUEDA
+            ]
+            name "solid(1)"
+            boundingObject USE RUEDA
+            physics Physics {
+            }
+          }
+        }
+        DEF RUEDA3 HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor 0.039 -0.03 0.02
+          }
+          endPoint Solid {
+            translation 0.039 -0.03 0.02
+            rotation 9.58979e-09 -1 9.58976e-09 -1.5707953071795862
+            children [
+              USE RUEDA
+            ]
+            name "solid(2)"
+            boundingObject USE RUEDA
+            physics Physics {
+            }
+          }
+        }
+        DEF RUEDA4 HingeJoint {
+          jointParameters HingeJointParameters {
+            anchor -0.039 -0.03 0.02
+          }
+          endPoint Solid {
+            translation -0.039 -0.03 0.02
+            rotation 0 1 0 1.5707996938995747
+            children [
+              USE RUEDA
+            ]
+            name "solid(3)"
+            boundingObject USE RUEDA
+            physics Physics {
+            }
+          }
+        }
+      ]
+    }
+  ]
+  boundingObject USE CUERPOROBOT
+  physics Physics {
+    mass 0.21
+  }
+}
