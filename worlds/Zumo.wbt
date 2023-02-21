@@ -3,14 +3,15 @@
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/BrushedAluminium.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Copper.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/PaintedWood.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/GlossyPaint.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.2857362615109974 -0.2870647555728477 0.9143022558025437 4.627565117683193
-  position 0.0007598007796481912 0.6233224934621735 0.3572076946438418
+  orientation -0.03184603359184768 -0.03845190462326574 0.9987528629121973 4.898551749142507
+  position -0.08100829494309092 0.44161820238209576 0.08133027084582277
 }
 TexturedBackground {
 }
@@ -24,11 +25,91 @@ Robot {
   children [
     Group {
       children [
+        DEF Sensor_dist_left Solid {
+          translation -0.0325 -0.006 0.02
+          scale 0.05 0.05 0.05
+          children [
+            DEF ds_left DistanceSensor {
+              rotation 0 0 1 3.14
+              name "ds_left"
+            }
+            Shape {
+              appearance PaintedWood {
+                colorOverride 0.666667 0 0
+              }
+              geometry Box {
+                size 0.1 0.1 0.1
+              }
+              castShadows FALSE
+            }
+          ]
+          name "solid(4)"
+        }
+        DEF Sensor_dist_front_1 Solid {
+          translation -0.02 0.0375 0.02
+          scale 0.05 0.05 0.05
+          children [
+            DEF ds_front1 DistanceSensor {
+              rotation 0 0 1 1.57
+              name "ds_front1"
+            }
+            Shape {
+              appearance PaintedWood {
+                colorOverride 0.666667 0 0
+              }
+              geometry Box {
+                size 0.1 0.1 0.1
+              }
+              castShadows FALSE
+            }
+          ]
+          name "solid(6)"
+        }
+        DEF Sensor_dist_front_2 Solid {
+          translation 0.02 0.0375 0.02
+          scale 0.05 0.05 0.05
+          children [
+            DEF ds_front2 DistanceSensor {
+              rotation 0 0 1 1.57
+              name "ds_front2"
+            }
+            Shape {
+              appearance PaintedWood {
+                colorOverride 0.666667 0 0
+              }
+              geometry Box {
+                size 0.1 0.1 0.1
+              }
+              castShadows FALSE
+            }
+          ]
+          name "solid(7)"
+        }
+        DEF Sensor_dist_right Solid {
+          translation 0.0325 -0.006 0.02
+          scale 0.05 0.05 0.05
+          children [
+            DEF ds_right DistanceSensor {
+              name "ds_right"
+            }
+            Shape {
+              appearance PaintedWood {
+                colorOverride 0.666667 0 0
+              }
+              geometry Box {
+                size 0.1 0.1 0.1
+              }
+              castShadows FALSE
+            }
+          ]
+          name "solid(5)"
+        }
         DEF CUERPOROBOT Transform {
           translation 0 0 0.015
           children [
             Shape {
-              appearance BrushedAluminium {
+              appearance GlossyPaint {
+                baseColor 0.698039 0.466667 0.00392157
               }
               geometry Box {
                 size 0.06 0.07 0.02
@@ -46,8 +127,8 @@ Robot {
             }
           ]
           endPoint Solid {
-            translation 0.039 0.018 0.02
-            rotation 0 1 0 1.572410605461135
+            translation 0.03899999999827967 0.017999998288830317 0.02000383370743645
+            rotation 7.533347103189438e-10 1 7.487565088497621e-10 1.5724105945633815
             children [
               DEF RUEDA Shape {
                 appearance Copper {
@@ -73,8 +154,8 @@ Robot {
             }
           ]
           endPoint Solid {
-            translation -0.039 0.018 0.02
-            rotation 0 1 0 1.5707996938995747
+            translation -0.038999999836121346 0.01799999824401858 0.020003968802141003
+            rotation -2.0802288189357243e-11 1 -2.05313262479035e-11 1.5707996940304945
             children [
               USE RUEDA
             ]
@@ -89,8 +170,8 @@ Robot {
             anchor 0.039 -0.03 0.02
           }
           endPoint Solid {
-            translation 0.039 -0.03 0.02
-            rotation 9.58979e-09 -1 9.58976e-09 -1.5707953071795862
+            translation 0.0390000000692877 -0.030000001028991443 0.020002273903020323
+            rotation -9.589934302094096e-09 0.9999999999999999 -9.589615556708358e-09 1.5707953073481018
             children [
               USE RUEDA
             ]
@@ -105,8 +186,8 @@ Robot {
             anchor -0.039 -0.03 0.02
           }
           endPoint Solid {
-            translation -0.039 -0.03 0.02
-            rotation 0 1 0 1.5707996938995747
+            translation -0.038999999941102544 -0.030000001087579928 0.020002407145816782
+            rotation -1.3273944086925363e-13 1 1.3280232495963257e-13 1.570799694033442
             children [
               USE RUEDA
             ]
