@@ -11,7 +11,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.03184603359184768 -0.03845190462326574 0.9987528629121973 4.898551749142507
-  position -0.08100829494309092 0.44161820238209576 0.08133027084582277
+  position -0.08949150843776776 0.4863576811000608 0.08423717085353616
 }
 TexturedBackground {
 }
@@ -109,7 +109,7 @@ Robot {
           children [
             Shape {
               appearance GlossyPaint {
-                baseColor 0.698039 0.466667 0.00392157
+                baseColor 0.698039 0.643137 0.0470588
               }
               geometry Box {
                 size 0.06 0.07 0.02
