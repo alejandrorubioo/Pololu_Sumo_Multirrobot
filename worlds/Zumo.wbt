@@ -10,15 +10,15 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.03184603359184768 -0.03845190462326574 0.9987528629121973 4.898551749142507
-  position -0.08949150843776776 0.4863576811000608 0.08423717085353616
+  orientation -0.29937404240285975 -0.36147365391524894 0.8830130125091757 4.776425218292626
+  position -0.2582513406024442 1.5161162737234928 1.087758402980856
 }
 TexturedBackground {
 }
 TexturedBackgroundLight {
 }
 RectangleArena {
-  translation 0 -0.01 0
+  translation -0.00302408 -0.0454882 -1.38778e-17
   floorSize 5 5
 }
 Robot {
@@ -128,7 +128,7 @@ Robot {
           ]
           endPoint Solid {
             translation 0.03899999999827967 0.017999998288830317 0.02000383370743645
-            rotation 7.533347103189438e-10 1 7.487565088497621e-10 1.5724105945633815
+            rotation 7.533347103189438e-10 1 7.487565088497621e-10 1.5724105945633813
             children [
               DEF RUEDA Shape {
                 appearance Copper {
@@ -155,7 +155,7 @@ Robot {
           ]
           endPoint Solid {
             translation -0.038999999836121346 0.01799999824401858 0.020003968802141003
-            rotation -2.0802288189357243e-11 1 -2.05313262479035e-11 1.5707996940304945
+            rotation -2.0802288189357243e-11 1 -2.05313262479035e-11 1.5707996940304942
             children [
               USE RUEDA
             ]
@@ -204,4 +204,5 @@ Robot {
   physics Physics {
     mass 0.21
   }
+  controller "Pololo_Controller"
 }
