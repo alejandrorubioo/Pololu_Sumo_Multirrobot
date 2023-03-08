@@ -11,7 +11,7 @@
 #include <webots/Motor.hpp>
 
 #define TIME_STEP 64
-#define MAX_SPEED -6.28
+#define MAX_SPEED -6
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
 
@@ -37,12 +37,20 @@ int main(int argc, char **argv) {
   
   Motor *leftMotor = robot->getMotor("Motor2");
   Motor *rightMotor = robot->getMotor("Motor1");
+  Motor *leftMotor_1 = robot->getMotor("Motor4");
+  Motor *rightMotor_2 = robot->getMotor("Motor3");
+
+  
  
   leftMotor->setPosition(INFINITY);
   rightMotor->setPosition(INFINITY);
+  leftMotor_1->setPosition(INFINITY);
+  rightMotor_2->setPosition(INFINITY);
   
   leftMotor->setVelocity(0.0);
   rightMotor->setVelocity(0.0);
+  leftMotor_1->setVelocity(0.0);
+  rightMotor_2->setVelocity(0.0);
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
@@ -58,7 +66,9 @@ int main(int argc, char **argv) {
     //  motor->setPosition(10.0);
     
     leftMotor->setVelocity(MAX_SPEED);
-    rightMotor->setVelocity(MAX_SPEED/4);
+    rightMotor->setVelocity(MAX_SPEED*0.7);
+    leftMotor_1->setVelocity(MAX_SPEED);
+    rightMotor_2->setVelocity(MAX_SPEED*0.7);
     
   };
 

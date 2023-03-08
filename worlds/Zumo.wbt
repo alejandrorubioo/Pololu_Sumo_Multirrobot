@@ -11,7 +11,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.29937404240285975 -0.36147365391524894 0.8830130125091757 4.776425218292626
-  position -0.2582513406024442 1.5161162737234928 1.087758402980856
+  position 0.15280978817941837 1.5940590530035594 1.0877584029808534
 }
 TexturedBackground {
 }
@@ -22,6 +22,8 @@ RectangleArena {
   floorSize 5 5
 }
 Robot {
+  translation 0.0039042842513790565 -0.04198196170129252 -6.506999724587188e-05
+  rotation -0.0029596271298765373 -0.0010880864735094468 0.9999950283251803 0.14986310806293232
   children [
     Group {
       children [
@@ -119,6 +121,7 @@ Robot {
         }
         DEF RUEDA1 HingeJoint {
           jointParameters HingeJointParameters {
+            position -476.97720684915834
             anchor 0.039 0.018 0.02
           }
           device [
@@ -127,8 +130,8 @@ Robot {
             }
           ]
           endPoint Solid {
-            translation 0.03899999999827967 0.017999998288830317 0.02000383370743645
-            rotation 7.533347103189438e-10 1 7.487565088497621e-10 1.5724105945633813
+            translation 0.03899999999827967 0.017998011478231483 0.02000327766636687
+            rotation 0.25944734233798217 0.9301378820670467 0.259866498220888 1.6447654934434186
             children [
               DEF RUEDA Shape {
                 appearance Copper {
@@ -142,10 +145,13 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
+            linearVelocity -0.012628785142038608 0.08922892814033848 7.712036665179742e-06
+            angularVelocity -4.14785380785294 -0.6601900413865615 -0.38189283259966417
           }
         }
         DEF RUEDA2 HingeJoint {
           jointParameters HingeJointParameters {
+            position -681.3895032664587
             anchor -0.039 0.018 0.02
           }
           device [
@@ -154,8 +160,8 @@ Robot {
             }
           ]
           endPoint Solid {
-            translation -0.038999999836121346 0.01799999824401858 0.020003968802141003
-            rotation -2.0802288189357243e-11 1 -2.05313262479035e-11 1.5707996940304942
+            translation -0.038999999836121346 0.01800131060932101 0.019996253842405134
+            rotation -0.7020719336087832 0.11910785285612474 -0.7020742976543352 2.9044947428527177
             children [
               USE RUEDA
             ]
@@ -163,15 +169,23 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
+            linearVelocity -0.01714582119850874 0.1178324434681843 -8.156234937751145e-06
+            angularVelocity -5.924613144847347 -0.9485040619371199 -0.387887783206276
           }
         }
         DEF RUEDA3 HingeJoint {
           jointParameters HingeJointParameters {
+            position -477.04199368284833
             anchor 0.039 -0.03 0.02
           }
+          device [
+            RotationalMotor {
+              name "Motor3"
+            }
+          ]
           endPoint Solid {
-            translation 0.0390000000692877 -0.030000001028991443 0.020002273903020323
-            rotation -9.589934302094096e-09 0.9999999999999999 -9.589615556708358e-09 1.5707953073481018
+            translation 0.0390000000692877 -0.03000105113456987 0.020002016371027536
+            rotation 0.2312993483956829 0.9449874771354271 0.231299112598715 1.6273487424151385
             children [
               USE RUEDA
             ]
@@ -179,15 +193,23 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
+            linearVelocity -0.03022006135953058 0.08644869880019676 2.7050024421414762e-06
+            angularVelocity -4.147853691171449 -0.6601900801431451 -0.38189291015608784
           }
         }
         DEF RUEDA4 HingeJoint {
           jointParameters HingeJointParameters {
+            position -681.4525460609339
             anchor -0.039 -0.03 0.02
           }
+          device [
+            RotationalMotor {
+              name "Motor4"
+            }
+          ]
           endPoint Solid {
-            translation -0.038999999941102544 -0.030000001087579928 0.020002407145816782
-            rotation -1.3273944086925363e-13 1 1.3280232495963257e-13 1.570799694033442
+            translation -0.038999999941102544 -0.029999349795799865 0.01999768233163196
+            rotation -0.703792441235846 0.09669055569493121 -0.7037948110768463 2.948811473345725
             children [
               USE RUEDA
             ]
@@ -195,6 +217,8 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
+            linearVelocity -0.03473633194657629 0.11504445012542466 -1.8892524177618726e-06
+            angularVelocity -5.924613102502713 -0.9485041803338455 -0.3878879784087938
           }
         }
       ]
@@ -205,4 +229,6 @@ Robot {
     mass 0.21
   }
   controller "Pololo_Controller"
+  linearVelocity -0.02148364957485779 0.10247570408620596 -6.703543091714011e-07
+  angularVelocity -6.258864874086192e-05 0.0001724324902081569 -0.370951653646434
 }
