@@ -10,8 +10,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.29937404240285975 -0.36147365391524894 0.8830130125091757 4.776425218292626
-  position 0.15280978817941837 1.5940590530035594 1.0877584029808534
+  orientation -0.12094843971827596 -0.0245181647110047 0.9923559515259225 3.297716604427986
+  position 1.540665620559129 2.124724563587389 0.6641835023483067
 }
 TexturedBackground {
 }
@@ -22,12 +22,12 @@ RectangleArena {
   floorSize 5 5
 }
 Robot {
-  translation 0.0039042842513790565 -0.04198196170129252 -6.506999724587188e-05
-  rotation -0.0029596271298765373 -0.0010880864735094468 0.9999950283251803 0.14986310806293232
+  translation -0.5416957854898944 2.4162958414877425 -5.5346820776871336e-05
+  rotation 0.09313295523865905 0.0016347559235159637 -0.9956523390328496 0.00985697188804737
   children [
     Group {
       children [
-        DEF Sensor_dist_left Solid {
+        DEF DS_LEFT Solid {
           translation -0.0325 -0.006 0.02
           scale 0.05 0.05 0.05
           children [
@@ -47,13 +47,13 @@ Robot {
           ]
           name "solid(4)"
         }
-        DEF Sensor_dist_front_1 Solid {
+        DEF DS_FRONT_LEFT Solid {
           translation -0.02 0.0375 0.02
           scale 0.05 0.05 0.05
           children [
-            DEF ds_front1 DistanceSensor {
+            DEF ds_front_left DistanceSensor {
               rotation 0 0 1 1.57
-              name "ds_front1"
+              name "ds_front_left"
             }
             Shape {
               appearance PaintedWood {
@@ -67,13 +67,13 @@ Robot {
           ]
           name "solid(6)"
         }
-        DEF Sensor_dist_front_2 Solid {
+        DEF DS_FRONT_RIGHT Solid {
           translation 0.02 0.0375 0.02
           scale 0.05 0.05 0.05
           children [
-            DEF ds_front2 DistanceSensor {
+            DEF ds_front_right DistanceSensor {
               rotation 0 0 1 1.57
-              name "ds_front2"
+              name "ds_front_right"
             }
             Shape {
               appearance PaintedWood {
@@ -87,7 +87,7 @@ Robot {
           ]
           name "solid(7)"
         }
-        DEF Sensor_dist_right Solid {
+        DEF DS_RIGHT Solid {
           translation 0.0325 -0.006 0.02
           scale 0.05 0.05 0.05
           children [
@@ -119,19 +119,19 @@ Robot {
             }
           ]
         }
-        DEF RUEDA1 HingeJoint {
+        DEF FRONT_RIGHT_WHEEL HingeJoint {
           jointParameters HingeJointParameters {
-            position -476.97720684915834
+            position -818.0951072634534
             anchor 0.039 0.018 0.02
           }
           device [
             RotationalMotor {
-              name "Motor1"
+              name "MOTOR_FRONT_RIGHT"
             }
           ]
           endPoint Solid {
-            translation 0.03899999999827967 0.017998011478231483 0.02000327766636687
-            rotation 0.25944734233798217 0.9301378820670467 0.259866498220888 1.6447654934434186
+            translation 0.03899999999827967 0.018003673379907836 0.020001097085087415
+            rotation -0.5123721801965564 0.6885496029797754 -0.5131999544008371 1.9371008129943357
             children [
               DEF RUEDA Shape {
                 appearance Copper {
@@ -145,23 +145,23 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
-            linearVelocity -0.012628785142038608 0.08922892814033848 7.712036665179742e-06
-            angularVelocity -4.14785380785294 -0.6601900413865615 -0.38189283259966417
+            linearVelocity 0.001969580716902038 -6.231831364354134e-06 2.540811702693919e-05
+            angularVelocity -9.999704341490496 0.09858441587877621 0.00017660296940961664
           }
         }
-        DEF RUEDA2 HingeJoint {
+        DEF FRONT_LEFT_WHEEL HingeJoint {
           jointParameters HingeJointParameters {
-            position -681.3895032664587
+            position -1022.5074033854564
             anchor -0.039 0.018 0.02
           }
           device [
             RotationalMotor {
-              name "Motor2"
+              name "MOTOR_FRONT_LEFT"
             }
           ]
           endPoint Solid {
-            translation -0.038999999836121346 0.01800131060932101 0.019996253842405134
-            rotation -0.7020719336087832 0.11910785285612474 -0.7020742976543352 2.9044947428527177
+            translation -0.038999999836121346 0.017996044354206504 0.019999677107023512
+            rotation -0.5923183651767644 -0.5461827036913718 -0.5923203596557427 4.14140530431177
             children [
               USE RUEDA
             ]
@@ -169,23 +169,23 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
-            linearVelocity -0.01714582119850874 0.1178324434681843 -8.156234937751145e-06
-            angularVelocity -5.924613144847347 -0.9485040619371199 -0.387887783206276
+            linearVelocity 0.0019696990134095535 5.0968833782582535e-06 -2.3078625559811415e-05
+            angularVelocity -9.999704329264778 0.09858437287073504 0.0001766619093623437
           }
         }
-        DEF RUEDA3 HingeJoint {
+        DEF BACK_RIGHT_WHEEL HingeJoint {
           jointParameters HingeJointParameters {
-            position -477.04199368284833
+            position -477.0419976246785
             anchor 0.039 -0.03 0.02
           }
           device [
             RotationalMotor {
-              name "Motor3"
+              name "MOTOR_BACK_RIGHT"
             }
           ]
           endPoint Solid {
-            translation 0.0390000000692877 -0.03000105113456987 0.020002016371027536
-            rotation 0.2312993483956829 0.9449874771354271 0.231299112598715 1.6273487424151385
+            translation 0.0390000000692877 -0.030001051126621686 0.02000201637517085
+            rotation 0.23129758554433313 0.9449883400975811 0.23129734974914887 1.6273478306757825
             children [
               USE RUEDA
             ]
@@ -193,23 +193,23 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
-            linearVelocity -0.03022006135953058 0.08644869880019676 2.7050024421414762e-06
-            angularVelocity -4.147853691171449 -0.6601900801431451 -0.38189291015608784
+            linearVelocity 0.0019726049783203776 6.241845085736704e-06 -4.376700142944195e-06
+            angularVelocity -0.00018643624991190655 0.000420225417833501 6.314817183411425e-05
           }
         }
-        DEF RUEDA4 HingeJoint {
+        DEF BACK_LEFT_WHEEL HingeJoint {
           jointParameters HingeJointParameters {
-            position -681.4525460609339
+            position -1022.57044772589
             anchor -0.039 -0.03 0.02
           }
           device [
             RotationalMotor {
-              name "Motor4"
+              name "MOTOR_BACK_LEFT"
             }
           ]
           endPoint Solid {
-            translation -0.038999999941102544 -0.029999349795799865 0.01999768233163196
-            rotation -0.703792441235846 0.09669055569493121 -0.7037948110768463 2.948811473345725
+            translation -0.038999999941102544 -0.030002406738023873 0.01999995568013169
+            rotation -0.5807746544332671 -0.5704378406051751 -0.5807766100435038 4.178387628919207
             children [
               USE RUEDA
             ]
@@ -217,8 +217,8 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
-            linearVelocity -0.03473633194657629 0.11504445012542466 -1.8892524177618726e-06
-            angularVelocity -5.924613102502713 -0.9485041803338455 -0.3878879784087938
+            linearVelocity 0.0019725994407351565 1.5926973385461926e-06 2.2227603386397547e-06
+            angularVelocity -9.999704386978225 0.09858449833331442 0.00017664010228350742
           }
         }
       ]
@@ -229,6 +229,6 @@ Robot {
     mass 0.21
   }
   controller "Pololo_Controller"
-  linearVelocity -0.02148364957485779 0.10247570408620596 -6.703543091714011e-07
-  angularVelocity -6.258864874086192e-05 0.0001724324902081569 -0.370951653646434
+  linearVelocity 0.0019686621712971526 2.702015394294763e-06 6.137819991162512e-06
+  angularVelocity -0.00018633452693589734 0.00042022381104974473 6.315069888098502e-05
 }

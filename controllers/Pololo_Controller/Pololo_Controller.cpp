@@ -1,19 +1,24 @@
 // File:          Pololo_Controller.cpp
 // Date:
 // Description:
-// Author:
+// Author: 
 // Modifications:
+
+#include <stdio.h>
 
 // You may need to add webots include files such as
 // <webots/DistanceSensor.hpp>, <webots/Motor.hpp>, etc.
 // and/or to add some other includes
 #include <webots/Robot.hpp>
 #include <webots/Motor.hpp>
+#include <webots/DistanceSensor.hpp>
 
 #define TIME_STEP 64
-#define MAX_SPEED -6
+#define MAX_SPEED -10
+
 // All the webots classes are defined in the "webots" namespace
 using namespace webots;
+using namespace std;
 
 // This is the main program of your controller.
 // It creates an instance of your Robot instance, launches its
@@ -35,22 +40,33 @@ int main(int argc, char **argv) {
   //  DistanceSensor *ds = robot->getDistanceSensor("dsname");
   //  ds->enable(timeStep);
   
-  Motor *leftMotor = robot->getMotor("Motor2");
-  Motor *rightMotor = robot->getMotor("Motor1");
-  Motor *leftMotor_1 = robot->getMotor("Motor4");
-  Motor *rightMotor_2 = robot->getMotor("Motor3");
+  // Motors setup 
+  Motor *front_left_motor = robot->getMotor("MOTOR_FRONT_LEFT");
+  Motor *front_right_motor = robot->getMotor("MOTOR_FRONT_RIGHT");
+  Motor *back_left_motor = robot->getMotor("MOTOR_BACK_LEFT");
+  Motor *back_right_motor = robot->getMotor("MOTOR_BACK_RIGHT");
 
+  // Motors initialization
+  front_left_motor->setPosition(INFINITY);
+  front_right_motor->setPosition(INFINITY);
+  back_left_motor->setPosition(INFINITY);
+  back_right_motor->setPosition(INFINITY);
   
- 
-  leftMotor->setPosition(INFINITY);
-  rightMotor->setPosition(INFINITY);
-  leftMotor_1->setPosition(INFINITY);
-  rightMotor_2->setPosition(INFINITY);
+  front_left_motor->setVelocity(0.0);
+  front_right_motor->setVelocity(0.0);
+  back_left_motor->setVelocity(0.0);
+  back_right_motor->setVelocity(0.0);
+    
+  // Distance sensors initializations
+  //DistanceSensor *leftDS = robot->getDistanceSensor()
+  DistanceSensor *ds_front_left = robot->getDistanceSensor("ds_front_left");
+  DistanceSensor *ds_left = robot->getDistanceSensor("ds_left");
+  DistanceSensor *ds_right = robot->getDistanceSensor("ds_right");
   
-  leftMotor->setVelocity(0.0);
-  rightMotor->setVelocity(0.0);
-  leftMotor_1->setVelocity(0.0);
-  rightMotor_2->setVelocity(0.0);
+  // Distance sensors activation
+  ds_front_left->enable(TIME_STEP);
+  ds_left->enable(TIME_STEP);
+  ds_right->enable(TIME_STEP);
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
@@ -61,14 +77,32 @@ int main(int argc, char **argv) {
     //  double val = ds->getValue();
 
     // Process sensor data here.
+    double ds_front_left_val = ds_left->getValue();
+    double ds_left_val = ds_left->getValue();
+    double ds_right_val = ds_left->getValue();
+    
+    cout << "Front distance " << ds_front_left_val 
+         << "  Left distance " << ds_left_val 
+         << "  Right distance " << ds_right_val << endl;
 
     // Enter here functions to send actuator commands, like:
     //  motor->setPosition(10.0);
     
-    leftMotor->setVelocity(MAX_SPEED);
-    rightMotor->setVelocity(MAX_SPEED*0.7);
-    leftMotor_1->setVelocity(MAX_SPEED);
-    rightMotor_2->setVelocity(MAX_SPEED*0.7);
+    if(ds_front_left_val > 500){
+    
+      front_left_motor->setVelocity(MAX_SPEED);
+      front_right_motor->setVelocity(MAX_SPEED);
+      back_left_motor->setVelocity(MAX_SPEED);
+      front_right_motor->setVelocity(MAX_SPEED);
+    }
+    else{
+    
+      front_left_motor->setVelocity(MAX_SPEED*-0.5);
+      front_right_motor->setVelocity(MAX_SPEED*0.5);
+      back_left_motor->setVelocity(MAX_SPEED*-0.5);
+      front_right_motor->setVelocity(MAX_SPEED*0.5);
+    }
+    
     
   };
 
