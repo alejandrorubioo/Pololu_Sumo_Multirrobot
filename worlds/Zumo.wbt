@@ -11,8 +11,8 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.25804101770744614 0.30068158096468056 -0.918153266099449 1.6473082781236663
-  position -0.0017635238979404689 1.54750041795165 1.1579579616342928
+  orientation 0.1844410750839926 -0.08266649272017669 -0.9793608838437475 4.198668309163261
+  position 0.6620607462611288 -1.38011971521411 0.7009053829176116
 }
 TexturedBackground {
 }
@@ -25,44 +25,39 @@ RectangleArena {
   }
 }
 Robot {
-  translation -0.04129536755822212 -0.04204576311542143 0.04596807845383402
-  rotation 0.0001847834801095572 -0.0004764080533640983 0.9999998694452075 -1.9283750130251978
+  translation -0.041295389905006585 -0.04204549305990837 0.046054921504272
+  rotation -0.00023235394104881087 0.00037039757254142986 -0.9999999044086376 1.9283749569982633
   children [
     DEF IR_ds Solid {
       translation 0 0.04 0.009
       children [
-        DEF IR_0 DistanceSensor {
+        DEF IR_0_ds DistanceSensor {
           translation 0.03 0 0
-          rotation 0 1 0 1.5708
-          name "IR_0"
-          type "infra-red"
+          rotation 0 -1 0 -5.307179586466759e-06
+          name "IR_0_ds"
         }
         DEF IR_1 DistanceSensor {
-          translation 0.017 0 0
+          translation 0.012 0 0
           rotation 0 1 0 1.5708
           name "IR_1"
           type "infra-red"
         }
         DEF IR_2 DistanceSensor {
-          translation 0.005 0 0
           rotation 0 1 0 1.5708
           name "IR_2"
           type "infra-red"
         }
-        DEF IR_3 DistanceSensor {
-          translation -0.005 0 0
-          rotation 0 1 0 1.5708
-          name "IR_3"
-          type "infra-red"
+        DEF IR_3_ds DistanceSensor {
+          rotation 0.5773509358554485 0.5773509358554485 0.5773489358556708 2.0944
+          name "IR_3_ds"
         }
-        DEF IR_5 DistanceSensor {
+        DEF IR_5_ds DistanceSensor {
           translation -0.03 0 2.20392e-07
-          rotation 0 1 0 1.5708
-          name "IR_5"
-          type "infra-red"
+          rotation 0 1 0 -3.1415853071795863
+          name "IR_5_ds"
         }
         DEF IR_4 DistanceSensor {
-          translation -0.017 0 1.8366e-07
+          translation -0.012 0 1.8366e-07
           rotation 0 1 0 1.5708
           name "IR_4"
           type "infra-red"
@@ -152,7 +147,7 @@ Robot {
         }
         DEF FRONT_RIGHT_WHEEL HingeJoint {
           jointParameters HingeJointParameters {
-            position -889.9351152349191
+            position -889.9351152633933
             anchor 0.039 0.018 0.02
           }
           device [
@@ -161,8 +156,8 @@ Robot {
             }
           ]
           endPoint Solid {
-            translation 0.03899999999827967 0.017997084800954268 0.019997510234918723
-            rotation 0.6716548653423715 0.3103234951816944 0.6727399722033304 2.540704377107029
+            translation 0.03899999999827967 0.017997084800883377 0.019997510235001733
+            rotation 0.6716548629212711 0.3103235056789544 0.6727399697783184 2.5407043579821718
             children [
               DEF RUEDA Shape {
                 appearance Copper {
@@ -180,7 +175,7 @@ Robot {
         }
         DEF FRONT_LEFT_WHEEL HingeJoint {
           jointParameters HingeJointParameters {
-            position -1664.919603799056
+            position -1664.9196037989984
             anchor -0.039 0.018 0.02
           }
           device [
@@ -189,8 +184,8 @@ Robot {
             }
           ]
           endPoint Solid {
-            translation -0.038999999836121346 0.01799950540698882 0.020003937863795396
-            rotation -0.06209085791647082 -0.9961372519703494 -0.062091066991615165 4.708515395127787
+            translation -0.038999999836121346 0.01799950540698859 0.020003937863795368
+            rotation -0.06209085794501194 -0.9961372519667913 -0.062091067020156376 4.7085153951242145
             children [
               USE RUEDA
             ]
@@ -202,7 +197,7 @@ Robot {
         }
         DEF BACK_RIGHT_WHEEL HingeJoint {
           jointParameters HingeJointParameters {
-            position -176.70120249956537
+            position -176.70120249963557
             anchor 0.039 -0.03 0.02
           }
           device [
@@ -211,8 +206,8 @@ Robot {
             }
           ]
           endPoint Solid {
-            translation 0.0390000000692877 -0.02999841450886329 0.020001629985846515
-            rotation -0.35234778352830504 0.8670076885540794 -0.35234742432832267 1.7130208209407234
+            translation 0.0390000000692877 -0.029998414508863175 0.0200016299858464
+            rotation -0.35234778355495944 0.867007688532415 -0.3523474243549772 1.713020820965458
             children [
               USE RUEDA
             ]
@@ -224,7 +219,7 @@ Robot {
         }
         DEF BACK_LEFT_WHEEL HingeJoint {
           jointParameters HingeJointParameters {
-            position -1664.982657082593
+            position -1664.982657082934
             anchor -0.039 -0.03 0.02
           }
           device [
@@ -233,8 +228,8 @@ Robot {
             }
           ]
           endPoint Solid {
-            translation -0.038999999941102544 -0.030000148909928546 0.02000240253574367
-            rotation -0.03070523787760159 -0.9990567403227809 -0.030705341269877593 4.711441908461292
+            translation -0.038999999941102544 -0.030000148909927724 0.020002402535743723
+            rotation -0.030705237707393362 -0.9990567403332431 -0.03070534109966881 4.711441908471764
             children [
               USE RUEDA
             ]
@@ -254,13 +249,13 @@ Robot {
   controller "Pololo_Controller"
 }
 RubberDuck {
-  translation -1.4198325250536485 -0.8296549791245624 0.11307462149747817
-  rotation -4.503058663772758e-07 -4.5069177967865425e-07 -0.999999999999797 1.5699560731670676
+  translation -1.4198325250527266 -0.8296549791274346 0.11307462150064268
+  rotation -4.5030956844061546e-07 -4.50688023777982e-07 -0.999999999999797 1.5699560731670676
   scale 6
 }
 DEF Dojo Solid {
-  translation 0.0006937208430961473 -0.00033110702918455226 -0.003818945157518307
-  rotation 0.05913553573179966 -0.05567052225155622 0.9966964339085157 0.0004350711077837942
+  translation 0.0006937177476227008 -0.00033095983446686483 -0.003818947117784224
+  rotation 0.05260523908397973 -0.05605304119740887 0.997040994840954 0.0004349207334706723
   children [
     Shape {
       appearance GlossyPaint {
