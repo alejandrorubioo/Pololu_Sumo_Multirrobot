@@ -59,14 +59,32 @@ int main(int argc, char **argv) {
     
   // Distance sensors initializations
   //DistanceSensor *leftDS = robot->getDistanceSensor()
-  DistanceSensor *ds_front_left = robot->getDistanceSensor("ds_front_left");
-  DistanceSensor *ds_left = robot->getDistanceSensor("ds_left");
-  DistanceSensor *ds_right = robot->getDistanceSensor("ds_right");
+  DistanceSensor *ds_front_right = robot->getDistanceSensor("front_right_ds");
+  DistanceSensor *ds_front_left = robot->getDistanceSensor("front_left_ds");
+  DistanceSensor *ds_left = robot->getDistanceSensor("left_ds");
+  DistanceSensor *ds_right = robot->getDistanceSensor("right_ds");
+  
+  //IR sensors: black(439) white(88)
+  DistanceSensor *ds_IR_0 = robot->getDistanceSensor("IR_0");
+  DistanceSensor *ds_IR_1 = robot->getDistanceSensor("IR_1");
+  DistanceSensor *ds_IR_2 = robot->getDistanceSensor("IR_2");
+  DistanceSensor *ds_IR_3 = robot->getDistanceSensor("IR_3");
+  DistanceSensor *ds_IR_4 = robot->getDistanceSensor("IR_4");
+  DistanceSensor *ds_IR_5 = robot->getDistanceSensor("IR_5");
+  
   
   // Distance sensors activation
+  ds_front_right->enable(TIME_STEP);
   ds_front_left->enable(TIME_STEP);
   ds_left->enable(TIME_STEP);
   ds_right->enable(TIME_STEP);
+  
+  ds_IR_0->enable(TIME_STEP);
+  ds_IR_1->enable(TIME_STEP);
+  ds_IR_2->enable(TIME_STEP);
+  ds_IR_3->enable(TIME_STEP);
+  ds_IR_4->enable(TIME_STEP);
+  ds_IR_5->enable(TIME_STEP);
   
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
@@ -77,33 +95,53 @@ int main(int argc, char **argv) {
     //  double val = ds->getValue();
 
     // Process sensor data here.
-    double ds_front_left_val = ds_left->getValue();
-    double ds_left_val = ds_left->getValue();
-    double ds_right_val = ds_left->getValue();
+    //double ds_front_right_val = ds_front_right->getValue();
+    //double ds_front_left_val = ds_front_left->getValue();
+    //double ds_left_val = ds_left->getValue();
+    //double ds_right_val = ds_right->getValue();
+    double ds_IR_val[6];
+    ds_IR_val[0] = ds_IR_0->getValue();
+    ds_IR_val[1] = ds_IR_1->getValue();
+    ds_IR_val[2] = ds_IR_2->getValue();
+    ds_IR_val[3] = ds_IR_3->getValue();
+    ds_IR_val[4] = ds_IR_4->getValue();
+    ds_IR_val[5] = ds_IR_5->getValue();
     
-    cout << "Front distance " << ds_front_left_val 
+    /*
+    cout << "Front_l distance " << ds_front_left_val 
+         << "  Front_r distance " << ds_front_right_val 
          << "  Left distance " << ds_left_val 
          << "  Right distance " << ds_right_val << endl;
-
+    */
+    
+    cout << "Front_l distance " << ds_IR_val[0] << endl;
+    
+    
     // Enter here functions to send actuator commands, like:
     //  motor->setPosition(10.0);
-    
-    if(ds_front_left_val > 500){
+     
+  
+    /*       
+    front_left_motor->setVelocity(0.0);
+    front_right_motor->setVelocity(0.0);
+    back_left_motor->setVelocity(0.0);
+    back_right_motor->setVelocity(0.0);
+    */
+ 
+    if(ds_IR_val[0] > 400){
     
       front_left_motor->setVelocity(MAX_SPEED);
       front_right_motor->setVelocity(MAX_SPEED);
       back_left_motor->setVelocity(MAX_SPEED);
-      front_right_motor->setVelocity(MAX_SPEED);
+      back_right_motor->setVelocity(MAX_SPEED);
     }
     else{
-    
+      
       front_left_motor->setVelocity(MAX_SPEED*-0.5);
       front_right_motor->setVelocity(MAX_SPEED*0.5);
       back_left_motor->setVelocity(MAX_SPEED*-0.5);
-      front_right_motor->setVelocity(MAX_SPEED*0.5);
-    }
-    
-    
+      back_right_motor->setVelocity(MAX_SPEED*0.5);
+    } 
   };
 
   // Enter here exit cleanup code.
