@@ -99,7 +99,7 @@ Robot {
           ]
           endPoint Solid {
             translation 0.03899999999827967 0.01799708480084792 0.019997510235043252
-            rotation 0.6716548617103053 0.31032351092938637 0.6727399685653958 2.54070434841646
+            rotation 0.6716548617103054 0.3103235109293863 0.6727399685653956 2.54070434841646
             children [
               DEF RUEDA Shape {
                 appearance Copper {
@@ -113,8 +113,6 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
-            linearVelocity 1.6881692244749724e-06 8.66432831393449e-06 1.9185481139130036e-05
-            angularVelocity -0.00043423271389829963 8.456797909215496e-05 9.059552634161736e-08
           }
         }
         DEF FRONT_LEFT_WHEEL HingeJoint {
@@ -129,7 +127,7 @@ Robot {
           ]
           endPoint Solid {
             translation -0.038999999836121346 0.01799950540698695 0.02000393786379516
-            rotation -0.062090858151681236 -0.9961372519410273 -0.0620910672268263 4.708515395098351
+            rotation -0.062090858151681215 -0.9961372519410271 -0.06209106722682629 4.708515395098351
             children [
               USE RUEDA
             ]
@@ -137,8 +135,6 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
-            linearVelocity 1.683706655961518e-06 8.667321259293506e-06 -1.4553646785844048e-05
-            angularVelocity -0.000434283841900315 8.443009380536425e-05 9.057806387736556e-08
           }
         }
         DEF BACK_RIGHT_WHEEL HingeJoint {
@@ -161,8 +157,6 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
-            linearVelocity 1.687361513674554e-06 8.671888349453183e-06 1.5672856282427287e-05
-            angularVelocity -0.0004342786049602122 8.444145037650605e-05 9.057761335939656e-08
           }
         }
         DEF BACK_LEFT_WHEEL HingeJoint {
@@ -177,7 +171,7 @@ Robot {
           ]
           endPoint Solid {
             translation -0.038999999941102544 -0.03000014890991159 0.020002402535744722
-            rotation -0.030705234355880327 -0.9990567405392563 -0.030705337748144542 4.711441908677972
+            rotation -0.03070523435588032 -0.9990567405392563 -0.030705337748144542 4.711441908677972
             children [
               USE RUEDA
             ]
@@ -185,8 +179,6 @@ Robot {
             boundingObject USE RUEDA
             physics Physics {
             }
-            linearVelocity 1.6838538444327101e-06 8.674893517943566e-06 -1.8039525506808927e-05
-            angularVelocity -0.0004343246346784964 8.438190328639356e-05 9.058215500365784e-08
           }
         }
       ]
@@ -232,6 +224,4 @@ DEF Dojo Solid {
   physics Physics {
   }
   locked TRUE
-  linearVelocity -2.1628203156307207e-10 -9.8742068443304e-10 -1.3865099818168397e-09
-  angularVelocity 1.327898778839747e-08 -3.076748702025515e-09 2.8405770494272055e-11
 }
