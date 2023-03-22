@@ -1,4 +1,4 @@
-// File:          Pololo_Controller.cpp
+// File:          my_controller.cpp
 // Date:
 // Description:
 // Author: 
@@ -27,6 +27,7 @@ using namespace std;
 // a controller program.
 // The arguments of the main function can be specified by the
 // "controllerArgs" field of the Robot node
+
 int main(int argc, char **argv) {
   // create the Robot instance.
   Robot *robot = new Robot();
@@ -78,62 +79,103 @@ int main(int argc, char **argv) {
   IR_front->enable(TIME_STEP);
   IR_izq->enable(TIME_STEP);
   
+  //Definimos las variables de los sensores
+  double DS_front_val;
+  double DS_right_val;
+  double DS_left_val;
+    
+  double IR_dch_val;
+  double IR_front_val;
+  double IR_izq_val;
+  
+  //Definimos los centineas
+  bool laser_central = false;
+  bool laser_izq = false;
+  bool laser_der = false;
+  
   // Main loop:
   // - perform simulation steps until Webots is stopping the controller
   //while (robot->step(timeStep) != -1) {
   while (robot->step(TIME_STEP) != -1) {
-    // Read the sensors:
-    // Enter here functions to read sensor data, like:
-    //  double val = ds->getValue();
-
-    // Process sensor data here.
-    //double ds_front_right_val = ds_front_right->getValue();
-    //double ds_front_left_val = ds_front_left->getValue();
-    //double ds_left_val = ds_left->getValue();
-    //double ds_right_val = ds_right->getValue();
+    //Obtenemos los valores de las distancias
+    DS_front_val = ds_front->getValue();
+    DS_right_val = ds_right->getValue();
+    DS_left_val = ds_left->getValue();  
+    /*-------------------------------*/
+    IR_dch_val = IR_dch->getValue();
+    IR_front_val = IR_front->getValue();
+    IR_izq_val = IR_izq->getValue();
     
-    double ds_front_val = ds_front->getValue();
-    double ds_right_val = ds_right->getValue();
-    double ds_left_val = ds_left->getValue();
-    double IR_dch_val = IR_dch->getValue();
-    double IR_front_val = IR_front->getValue();
-    double IR_izq_val = IR_izq->getValue();
-    
-    /*
-    cout << "Front_l distance " << ds_front_left_val 
-         << "  Front_r distance " << ds_front_right_val 
-         << "  Left distance " << ds_left_val 
-         << "  Right distance " << ds_right_val << endl;
-    */
-    
-    cout << "Seguilineas central: " << IR_front_val << endl;
-    
-    
-    // Enter here functions to send actuator commands, like:
-    //  motor->setPosition(10.0);
-     
-  
-    /*       
-    front_left_motor->setVelocity(0.0);
-    front_right_motor->setVelocity(0.0);
-    back_left_motor->setVelocity(0.0);
-    back_right_motor->setVelocity(0.0);
-    */
- 
-    if( IR_front_val > 400){
-    
-      front_left_motor->setVelocity(MAX_SPEED);
-      front_right_motor->setVelocity(MAX_SPEED);
-      back_left_motor->setVelocity(MAX_SPEED);
-      back_right_motor->setVelocity(MAX_SPEED);
+    //Seteamos las velocidades al maximo permitido
+    if(!laser_central && !laser_izq && !laser_der){
+      front_left_motor->setVelocity(MAX_SPEED/2);
+      front_right_motor->setVelocity(MAX_SPEED/2);
+      back_left_motor->setVelocity(MAX_SPEED/2);
+      back_right_motor->setVelocity(MAX_SPEED/2);
     }
-    else{
+    
+    cout << "Distancia Central: " << DS_front_val << endl;
+    cout << "Distancia Lateral Izquierda: " << DS_right_val << endl;
+    cout << "Distancia Lateral Derecha: " << DS_left_val << endl;
       
-      front_left_motor->setVelocity(MAX_SPEED*-0.5);
-      front_right_motor->setVelocity(MAX_SPEED*0.5);
-      back_left_motor->setVelocity(MAX_SPEED*-0.5);
-      back_right_motor->setVelocity(MAX_SPEED*0.5);
-    } 
+    if( DS_front_val < 901){
+      laser_central = true;
+    }
+    if( DS_left_val < 700){
+      laser_izq = true;
+    }
+    if( DS_right_val < 700){
+      laser_der = true;
+    }
+    
+    if(laser_central){
+      //while(DS_left_val > 1000){
+        front_left_motor->setVelocity(-MAX_SPEED/4);
+        front_right_motor->setVelocity(MAX_SPEED/4);
+        back_left_motor->setVelocity(-MAX_SPEED/4);
+        back_right_motor->setVelocity(MAX_SPEED/4);
+      //}
+      if(DS_right_val < 1000){
+        laser_central = false;
+      }
+    }
+    
+    if(laser_der){
+      //while(DS_left_val > 1000){
+        front_left_motor->setVelocity(-MAX_SPEED/4);
+        front_right_motor->setVelocity(MAX_SPEED/4);
+        back_left_motor->setVelocity(-MAX_SPEED/4);
+        back_right_motor->setVelocity(MAX_SPEED/4);
+      //}
+      if(DS_right_val < 1000){
+        laser_der = false;
+      }
+    }
+    
+    if(laser_izq){
+      //while(DS_left_val > 1000){
+        front_left_motor->setVelocity(MAX_SPEED/4);
+        front_right_motor->setVelocity(-MAX_SPEED/4);
+        back_left_motor->setVelocity(MAX_SPEED/4);
+        back_right_motor->setVelocity(-MAX_SPEED/4);
+      //}
+      if(DS_left_val < 1000){
+        laser_izq = false;
+      }
+    }
+    
+    if(laser_der && laser_izq){
+      //while(DS_left_val > 1000){
+        front_left_motor->setVelocity(-MAX_SPEED/4);
+        front_right_motor->setVelocity(MAX_SPEED/4);
+        back_left_motor->setVelocity(-MAX_SPEED/4);
+        back_right_motor->setVelocity(MAX_SPEED/4);
+      //}
+      if(DS_right_val < 1000){
+        laser_der = false;
+      }
+    }
+    
   };
 
   // Enter here exit cleanup code.
