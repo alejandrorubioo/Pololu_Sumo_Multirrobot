@@ -1,0 +1,6 @@
+.DS_Store
+
+# Webots build output
+controllers/*/build/
+controllers/*/*.exe
+controllers/Pololo_Controller/Pololo_Controller
