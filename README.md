@@ -67,9 +67,9 @@ worlds/.Zumo.wbproj, .Zumo.jpg   Webots project state and world preview
 
 ## Team and credits
 
-Commit authors: [alejandrorubioo](https://github.com/alejandrorubioo), CarlosD31, Pablo Martínez Juan.
+Commit authors: [alejandrorubioo](https://github.com/alejandrorubioo), [CarlosD31](https://github.com/CarlosD31), [Luperbal](https://github.com/Luperbal), Pablo Martínez Juan.
 
-Alejandro Rubio (alejandrorubioo) shared design, development and implementation on equal terms with the team.
+Team project; I worked across the whole implementation.
 
 `controllers/Pololo_Controller/Makefile` is the Webots template and keeps its Cyberbotics copyright and Apache 2.0 notice.
 
